@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - 13
+
+services:
+  - docker
+
+script:
+  - docker --version
+  - docker build -t simple-reverse-proxy .
+  - docker tag simple-reverse-proxy joelzeal/simple-reverse-proxy:latest
+
+after_sucess:
+  - echo "$DOCKER_PASSEORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo docker push simple-reverse-proxy
