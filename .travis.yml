@@ -11,5 +11,5 @@ script:
   - docker tag simple-reverse-proxy joelzeal/simple-reverse-proxy:latest
 
 after_success:
-  - echo "$DOCKER_PASSEORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - echo docker push joelzeal/simple-reverse-proxy
